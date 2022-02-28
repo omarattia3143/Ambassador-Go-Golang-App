@@ -1,19 +1,15 @@
 package main
 
 import (
+	"GoAndNextProject/src/database"
 	"github.com/gofiber/fiber/v2"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 	"log"
 )
 
 func main() {
-	_, err := gorm.Open(mysql.Open("root:root@tcp(db:3306)/ambassador"), &gorm.Config{})
-	if err != nil {
-		panic("couldn't connect to database!")
-	}
 
-	log.Println("connected to database successfully!")
+	database.Connect()
+	database.AutoMigrate()
 
 	app := fiber.New()
 
