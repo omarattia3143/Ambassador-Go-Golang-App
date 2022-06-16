@@ -9,6 +9,92 @@ Content-Type: application/json
   "PasswordConfirm" : "secret"
 }
 
+<> 2022-06-16T105247.400.json
+
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
+<> 2022-06-16T105226.400.json
+
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
+<> 2022-06-16T104752.400.json
+
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
+<> 2022-06-16T104747.400.json
+
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
 ###
 
 POST http://localhost:8000/api/admin/register
@@ -602,82 +688,6 @@ Content-Type: application/json
 }
 
 <> 2022-06-15T161127.400.json
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-{
-  "Email": "omar.aa.attia@gmail.com",
-  "Password" : "dqwkwqdqwdwdowd"
-}
-
-<> 2022-06-15T161034.500.txt
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-{
-  "Email": "omar.aa.attia@gmail.com",
-  "Password" : "dqwkwqdqwdwdowd"
-}
-
-<> 2022-06-15T160747.200.json
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-{
-  "Email": "omar.aa.attia@gmail.com",
-  "Password" : "dqwkdowd"
-}
-
-<> 2022-06-15T160729.200.json
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-{
-  "Email": "omar.aa.attia@gmail.com",
-  "Password" : "dqwkdowd"
-}
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "Omar",
-  "LastName" : "Attia",
-  "Email" : "omar.aa.attia@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret",
-  "IsAmbassador" : "true"
-}
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "Omar",
-  "LastName" : "Attia",
-  "Email" : "omar.aa.attia@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret",
-  "IsAmbassador" : "true"
-}
-
-<> 2022-06-15T154454.200.json
 
 ###
 

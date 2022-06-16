@@ -5,7 +5,6 @@ import (
 	"GoAndNextProject/src/models"
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v4"
-	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 	"strconv"
 	"time"
@@ -38,24 +37,23 @@ func Register(c *fiber.Ctx) error {
 		}
 	}
 
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(data["Password"]), 12)
-	if err != nil {
-		return err
-	}
-
 	user := models.User{
 		FirstName:    data["FirstName"],
 		LastName:     data["LastName"],
 		Email:        data["Email"],
-		Password:     hashedPassword,
 		IsAmbassador: false,
 	}
+
+	user.SetPassword(data["Password"])
 
 	var userExists bool
 	err = database.DB.Model(&user).Where("first_name = ?", user.FirstName).Find(&userExists).Error
 	if err != nil {
 		c.Status(fiber.StatusBadRequest)
-		return c.JSON(fiber.Map{"message": "user already exists"})
+		return c.JSON(fiber.Map{
+			"message": "User already exists",
+		})
+
 	}
 
 	var token string
@@ -109,18 +107,19 @@ func Login(c *fiber.Ctx) error {
 	if user.Id == 0 {
 		c.Status(fiber.StatusBadRequest)
 		return c.JSON(fiber.Map{
-			"message": "Invalid Credentials 1",
+			"message": "Invalid Credentials",
 		})
+
 	}
 
-	err := bcrypt.CompareHashAndPassword(user.Password, []byte(data["Password"]))
-	if err != nil {
+	if err := user.ComparePassword(data["Password"]); err != nil {
 		c.Status(fiber.StatusBadRequest)
 		return c.JSON(fiber.Map{
-			"message": "Invalid Credentials 2",
+			"message": "Invalid Credentials",
 		})
 	}
 
+	c.Status(fiber.StatusOK)
 	return c.JSON(fiber.Map{
 		"message": "Welcome!",
 	})
