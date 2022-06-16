@@ -1,0 +1,35 @@
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "Omar",
+  "LastName" : "Attia",
+  "Email" : "omar.aa.attia@gmail.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret",
+  "IsAmbassador" : "true"
+}
+
+###
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "jeff",
+  "LastName" : "anderson",
+  "Email" : "jeff@gmail.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
+###
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "john",
+  "LastName" : "abo 3amo",
+  "Email" : "jeff@gmail.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
