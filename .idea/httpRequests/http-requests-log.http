@@ -9,6 +9,45 @@ Content-Type: application/json
   "PasswordConfirm" : "secret"
 }
 
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
+###
+
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
+
 <> 2022-06-16T023529.200.json
 
 ###
@@ -639,50 +678,6 @@ Content-Type: application/json
 }
 
 <> 2022-06-15T154454.200.json
-
-###
-
-POST https://httpbin.org/post
-Content-Type: application/json
-
-{
-  "id": 999,
-  "value": "content"
-}
-
-<> 2022-06-15T153259.200.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "Omar",
-  "LastName" : "Attia",
-  "Email" : "omar.aa.attia@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret",
-  "IsAmbassador" : true
-}
-
-<> 2022-06-15T153150.500.txt
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "Omar",
-  "LastName" : "Attia",
-  "Email" : "omar.aa.attia@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret",
-  "IsAmbassador" : true
-}
-
-<> 2022-06-15T153039.500.txt
 
 ###
 
