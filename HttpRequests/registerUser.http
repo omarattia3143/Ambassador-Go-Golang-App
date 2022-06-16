@@ -33,3 +33,15 @@ Content-Type: application/json
   "Password" : "secret",
   "PasswordConfirm" : "secret"
 }
+
+###
+POST http://localhost:8000/api/admin/register
+Content-Type: application/json
+
+{
+  "FirstName" : "pangar",
+  "LastName" : "pangoora",
+  "Email" : "pangar@cat.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret"
+}
