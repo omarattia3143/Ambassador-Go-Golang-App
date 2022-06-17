@@ -15,5 +15,6 @@ func Setup(app *fiber.App) {
 	admin.Post("register", controllers.Register)
 	admin.Post("login", controllers.Login)
 	admin.Get("user", controllers.User)
+	admin.Post("logout", controllers.Logout)
 
 }
