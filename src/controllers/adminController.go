@@ -6,18 +6,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v4"
 	"gorm.io/gorm"
-	"strconv"
 	"time"
 )
-
-func generateJwtForUser(user *models.User) (string, error) {
-	claims := jwt.RegisteredClaims{
-		Subject:   strconv.Itoa(int(user.Id)),
-		ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour * 24)),
-	}
-
-	return jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString([]byte("secret"))
-}
 
 func Register(c *fiber.Ctx) error {
 
@@ -66,7 +56,7 @@ func Register(c *fiber.Ctx) error {
 			return err
 		}
 
-		token, err = generateJwtForUser(&user)
+		token, err = user.GenerateJwtForUser()
 		if err != nil {
 			return err
 		}
@@ -119,8 +109,50 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
+	token, err := user.GenerateJwtForUser()
+	if err != nil {
+		return err
+	}
+
+	cookie := fiber.Cookie{
+		Name:     "jwt",
+		Value:    token,
+		Expires:  time.Now().Add(time.Hour * 24),
+		HTTPOnly: true,
+	}
+
+	c.Cookie(&cookie)
+
 	c.Status(fiber.StatusOK)
 	return c.JSON(fiber.Map{
 		"message": "Welcome!",
 	})
+}
+
+func User(c *fiber.Ctx) error {
+	cookie := c.Cookies("jwt")
+	token, err := jwt.ParseWithClaims(cookie, &jwt.RegisteredClaims{}, func(token *jwt.Token) (interface{}, error) {
+		//todo: remove secret from here
+		return []byte("secret"), nil
+	})
+
+	if err != nil || !token.Valid {
+		c.Status(fiber.StatusUnauthorized)
+		return c.JSON(fiber.Map{
+			"message": "user is unauthorized",
+		})
+	}
+
+	payload := token.Claims.(*jwt.RegisteredClaims)
+
+	var user models.User
+	database.DB.Where("id = ?", payload.Subject).First(&user)
+	if user.Id == 0 {
+		c.Status(fiber.StatusUnauthorized)
+		return c.JSON(fiber.Map{
+			"message": "user does not exist",
+		})
+	}
+
+	return c.JSON(user)
 }
