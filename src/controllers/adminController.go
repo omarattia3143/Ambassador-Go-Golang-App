@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"GoAndNextProject/src/database"
+	"GoAndNextProject/src/middleware"
 	"GoAndNextProject/src/models"
 	"github.com/gofiber/fiber/v2"
-	"github.com/golang-jwt/jwt/v4"
 	"gorm.io/gorm"
 	"time"
 )
@@ -130,23 +130,11 @@ func Login(c *fiber.Ctx) error {
 }
 
 func User(c *fiber.Ctx) error {
-	cookie := c.Cookies("jwt")
-	token, err := jwt.ParseWithClaims(cookie, &jwt.RegisteredClaims{}, func(token *jwt.Token) (interface{}, error) {
-		//todo: remove secret from here
-		return []byte("secret"), nil
-	})
 
-	if err != nil || !token.Valid {
-		c.Status(fiber.StatusUnauthorized)
-		return c.JSON(fiber.Map{
-			"message": "user is unauthorized",
-		})
-	}
-
-	payload := token.Claims.(*jwt.RegisteredClaims)
+	userId, _ := middleware.GetUserId(c)
 
 	var user models.User
-	database.DB.Where("id = ?", payload.Subject).First(&user)
+	database.DB.Where("id = ?", userId).First(&user)
 	if user.Id == 0 {
 		c.Status(fiber.StatusUnauthorized)
 		return c.JSON(fiber.Map{
