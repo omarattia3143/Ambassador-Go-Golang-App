@@ -1,0 +1,12 @@
+PUT http://localhost:8000/api/admin/user/info
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NTQ2MDgxfQ.kqvbnITYIrCwc4Ul1YqKfF49mn7FxYUStf4suamEpqw
+
+{
+  "FirstName" : "John",
+  "LastName" : "Johnny",
+  "Email" : "jj@gmail.com",
+  "Password" : "secret",
+  "PasswordConfirm" : "secret",
+  "IsAmbassador" : "true"
+}

@@ -159,3 +159,55 @@ func Logout(c *fiber.Ctx) error {
 		"message": "Success",
 	})
 }
+
+func UpdateInfo(c *fiber.Ctx) error {
+	var data map[string]string
+
+	err := c.BodyParser(&data)
+	if err != nil {
+		return err
+	}
+
+	userId, _ := middleware.GetUserId(c)
+
+	user := models.User{
+		Id:        userId,
+		FirstName: data["FirstName"],
+		LastName:  data["LastName"],
+		Email:     data["Email"],
+	}
+
+	database.DB.Model(&user).Updates(&user)
+
+	return c.JSON(user)
+}
+
+func UpdatePassword(c *fiber.Ctx) error {
+	var data map[string]string
+
+	err := c.BodyParser(&data)
+	if err != nil {
+		return err
+	}
+
+	if data["Password"] != data["PasswordConfirm"] {
+
+		c.Status(fiber.StatusBadRequest)
+		err := c.JSON(fiber.Map{"message": "passwords doesn't match"})
+		if err != nil {
+			return err
+		}
+	}
+
+	userId, _ := middleware.GetUserId(c)
+
+	user := models.User{
+		Id: userId,
+	}
+
+	user.SetPassword(data["Password"])
+
+	database.DB.Model(&user).Updates(&user)
+
+	return c.JSON(user)
+}
