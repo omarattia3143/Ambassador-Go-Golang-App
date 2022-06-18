@@ -30,3 +30,8 @@ Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NjM
   "description": "shoes #1 updated",
   "price": 60
 }
+
+### Delete
+DELETE http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NjMzMzMxfQ.0AF4WHeRNYywKnl9aQjpfXJfW9AOJZJrRNAoTmKy3sY
