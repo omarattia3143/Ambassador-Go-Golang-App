@@ -5,8 +5,8 @@ Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NTQ
 {
   "FirstName" : "John",
   "LastName" : "Johnny",
-  "Email" : "jj@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret",
+  "email" : "jj@gmail.com",
+  "password" : "secret",
+  "password_confirm" : "secret",
   "IsAmbassador" : "true"
 }

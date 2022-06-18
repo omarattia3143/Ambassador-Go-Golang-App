@@ -4,10 +4,9 @@ Content-Type: application/json
 {
   "FirstName" : "Omar",
   "LastName" : "Attia",
-  "Email" : "omar.aa.attia@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret",
-  "IsAmbassador" : "true"
+  "email" : "omar.aa.attia@gmail.com",
+  "password" : "secret",
+  "password_confirm" : "secret"
 }
 
 ###
@@ -17,9 +16,9 @@ Content-Type: application/json
 {
   "FirstName" : "jeff",
   "LastName" : "anderson",
-  "Email" : "jeff@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
+  "email" : "jeff@gmail.com",
+  "password" : "secret",
+  "password_confirm" : "secret"
 }
 
 ###
@@ -29,9 +28,9 @@ Content-Type: application/json
 {
   "FirstName" : "john",
   "LastName" : "abo 3amo",
-  "Email" : "jeff@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
+  "email" : "jeff@gmail.com",
+  "password" : "secret",
+  "password_confirm" : "secret"
 }
 
 ###
@@ -41,7 +40,7 @@ Content-Type: application/json
 {
   "FirstName" : "pangar",
   "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
+  "email" : "pangar@cat.com",
+  "password" : "secret",
+  "password_confirm" : "secret"
 }

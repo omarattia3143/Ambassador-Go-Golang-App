@@ -1,0 +1,32 @@
+### Get All
+GET http://localhost:8000/api/admin/products
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NjMzMzMxfQ.0AF4WHeRNYywKnl9aQjpfXJfW9AOJZJrRNAoTmKy3sY
+
+### create
+POST http://localhost:8000/api/admin/products
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NTQ2MDgxfQ.kqvbnITYIrCwc4Ul1YqKfF49mn7FxYUStf4suamEpqw
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1",
+  "price": 50
+}
+
+### Get Product
+GET http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NTQ2MDgxfQ.kqvbnITYIrCwc4Ul1YqKfF49mn7FxYUStf4suamEpqw
+
+
+### Update
+PUT http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NjMzMzMxfQ.0AF4WHeRNYywKnl9aQjpfXJfW9AOJZJrRNAoTmKy3sY
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1 updated",
+  "price": 60
+}

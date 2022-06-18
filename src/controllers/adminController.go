@@ -18,7 +18,7 @@ func Register(c *fiber.Ctx) error {
 		return err
 	}
 
-	if data["Password"] != data["PasswordConfirm"] {
+	if data["password"] != data["password_confirm"] {
 
 		c.Status(fiber.StatusBadRequest)
 		err := c.JSON(fiber.Map{"message": "passwords doesn't match"})
@@ -28,13 +28,13 @@ func Register(c *fiber.Ctx) error {
 	}
 
 	user := models.User{
-		FirstName:    data["FirstName"],
-		LastName:     data["LastName"],
-		Email:        data["Email"],
+		FirstName:    data["first_name"],
+		LastName:     data["last_name"],
+		Email:        data["email"],
 		IsAmbassador: false,
 	}
 
-	user.SetPassword(data["Password"])
+	user.SetPassword(data["password"])
 
 	var userExists bool
 	err = database.DB.Model(&user).Where("first_name = ?", user.FirstName).Find(&userExists).Error
@@ -71,7 +71,7 @@ func Register(c *fiber.Ctx) error {
 	cookie := fiber.Cookie{
 		Name:     "jwt",
 		Value:    token,
-		Expires:  time.Now().Add(time.Hour * 24),
+		Expires:  time.Now().AddDate(0, 0, 7),
 		HTTPOnly: true,
 	}
 
@@ -92,7 +92,7 @@ func Login(c *fiber.Ctx) error {
 
 	var user models.User
 
-	database.DB.Where("email = ?", data["Email"]).First(&user)
+	database.DB.Where("email = ?", data["email"]).First(&user)
 
 	if user.Id == 0 {
 		c.Status(fiber.StatusBadRequest)
@@ -102,11 +102,8 @@ func Login(c *fiber.Ctx) error {
 
 	}
 
-	if err := user.ComparePassword(data["Password"]); err != nil {
-		c.Status(fiber.StatusBadRequest)
-		return c.JSON(fiber.Map{
-			"message": "Invalid Credentials",
-		})
+	if err := user.ComparePassword(data["password"]); err != nil {
+		return err
 	}
 
 	token, err := user.GenerateJwtForUser()
@@ -117,7 +114,7 @@ func Login(c *fiber.Ctx) error {
 	cookie := fiber.Cookie{
 		Name:     "jwt",
 		Value:    token,
-		Expires:  time.Now().Add(time.Hour * 24),
+		Expires:  time.Now().AddDate(0, 0, 7),
 		HTTPOnly: true,
 	}
 
@@ -172,9 +169,9 @@ func UpdateInfo(c *fiber.Ctx) error {
 
 	user := models.User{
 		Id:        userId,
-		FirstName: data["FirstName"],
-		LastName:  data["LastName"],
-		Email:     data["Email"],
+		FirstName: data["first_name"],
+		LastName:  data["last_name"],
+		Email:     data["email"],
 	}
 
 	database.DB.Model(&user).Updates(&user)
@@ -190,7 +187,7 @@ func UpdatePassword(c *fiber.Ctx) error {
 		return err
 	}
 
-	if data["Password"] != data["PasswordConfirm"] {
+	if data["password"] != data["password_confirm"] {
 
 		c.Status(fiber.StatusBadRequest)
 		err := c.JSON(fiber.Map{"message": "passwords doesn't match"})
@@ -205,9 +202,17 @@ func UpdatePassword(c *fiber.Ctx) error {
 		Id: userId,
 	}
 
-	user.SetPassword(data["Password"])
+	user.SetPassword(data["password"])
 
 	database.DB.Model(&user).Updates(&user)
 
 	return c.JSON(user)
+}
+
+func Ambassadors(c *fiber.Ctx) error {
+	var users []models.User
+
+	database.DB.Where("is_ambassador = true").Find(&users)
+
+	return c.JSON(users)
 }

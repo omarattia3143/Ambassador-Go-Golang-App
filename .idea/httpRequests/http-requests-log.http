@@ -1,3 +1,262 @@
+GET http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+<> 2022-06-18T121015.200.json
+
+###
+
+GET http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+<> 2022-06-18T121004.401.json
+
+###
+
+PUT http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1 updated",
+  "price": 60
+}
+
+<> 2022-06-18T120940.200.json
+
+###
+
+PUT http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1 updated",
+  "price": 60
+}
+
+<> 2022-06-18T120905.401.json
+
+###
+
+POST http://localhost:8000/api/admin/login
+Content-Type: application/json
+
+{
+  "email": "jj@gmail.com",
+  "password" : "123"
+}
+
+<> 2022-06-18T120851.200.json
+
+###
+
+POST http://localhost:8000/api/admin/login
+Content-Type: application/json
+
+{
+  "email": "jj@gmail.com",
+  "password" : "secret"
+}
+
+<> 2022-06-18T120841.500.txt
+
+###
+
+PUT http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1 updated",
+  "price": 60
+}
+
+<> 2022-06-18T120752.401.json
+
+###
+
+PUT http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1 updated",
+  "price": 60
+}
+
+<> 2022-06-18T120710.401.json
+
+###
+
+POST http://localhost:8000/api/admin/login
+Content-Type: application/json
+
+{
+  "email": "omar.aa.attia@gmail.com",
+  "password" : "secret"
+}
+
+<> 2022-06-18T120700.400.json
+
+###
+
+PUT http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1 updated",
+  "price": 60
+}
+
+<> 2022-06-18T120646.401.json
+
+###
+
+PUT http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1 updated",
+  "price": 60
+}
+
+<> 2022-06-18T120627.401.json
+
+###
+
+PUT http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1 updated",
+  "price": 60
+}
+
+<> 2022-06-18T120614.401.json
+
+###
+
+GET http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+<> 2022-06-18T114916.200.json
+
+###
+
+GET http://localhost:8000/api/admin/products/1
+Content-Type: application/json
+
+<> 2022-06-18T114902.200.json
+
+###
+
+POST http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1",
+  "price": 50
+}
+
+<> 2022-06-18T112703.400.json
+
+###
+
+POST http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1",
+  "price": 50
+}
+
+<> 2022-06-18T112359.200.json
+
+###
+
+POST http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1",
+  "price": "50.0f"
+}
+
+<> 2022-06-18T112309.500.txt
+
+###
+
+POST http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1",
+  "price": "50.0"
+}
+
+<> 2022-06-18T112254.500.txt
+
+###
+
+POST http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1",
+  "price": "50"
+}
+
+<> 2022-06-18T112240.500.txt
+
+###
+
+PUT http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+{
+  "title": "shoes #1",
+  "description": "shoes #1",
+  "price": "50"
+}
+
+<> 2022-06-18T112222.405.txt
+
+###
+
+GET http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+<> 2022-06-18T111529.200.json
+
+###
+
+GET http://localhost:8000/api/admin/products
+Content-Type: application/json
+
+<> 2022-06-18T111409.200.json
+
+###
+
+PUT http://localhost:8000/api/admin/user/password
+Content-Type: application/json
+
+{
+  "Password" : "123",
+  "PasswordConfirm" : "123"
+}
+
+<> 2022-06-18T092552.200.json
+
+###
+
 PUT http://localhost:8000/api/admin/user/info
 Content-Type: application/json
 
@@ -203,269 +462,6 @@ POST http://localhost:8000/api/admin/login
 Content-Type: application/json
 
 <> 2022-06-17T121303.500.txt
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-<> 2022-06-17T121247.500.txt
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-<> 2022-06-17T121111.200.json
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-<> 2022-06-17T121107.200.json
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-<> 2022-06-17T115942.200.json
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-<> 2022-06-17T115705.200.json
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-<> 2022-06-17T115504.200.json
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-<> 2022-06-17T115501.200.json
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-{
-  "Email": "omar.aa.attia@gmail.com",
-  "Password" : "secret"
-}
-
-<> 2022-06-17T115441.200.json
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-{
-  "Email": "omar.aa.attia@gmail.com",
-  "Password" : "secret"
-}
-
-<> 2022-06-17T114353.200.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-<> 2022-06-16T105247.400.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-<> 2022-06-16T105226.400.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-<> 2022-06-16T104752.400.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-<> 2022-06-16T104747.400.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "pangar",
-  "LastName" : "pangoora",
-  "Email" : "pangar@cat.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-<> 2022-06-16T023529.200.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "john",
-  "LastName" : "abo 3amo",
-  "Email" : "jeff@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-<> 2022-06-16T023427.400.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "john",
-  "LastName" : "abo 3amo",
-  "Email" : "jeff@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-<> 2022-06-16T022038.400.json
-
-###
-
-POST http://localhost:8000/api/admin/register
-Content-Type: application/json
-
-{
-  "FirstName" : "john",
-  "LastName" : "abo 3amo",
-  "Email" : "jeff@gmail.com",
-  "Password" : "secret",
-  "PasswordConfirm" : "secret"
-}
-
-<> 2022-06-16T022034.200.json
 
 ###
 
