@@ -1,10 +1,7 @@
 package models
 
 import (
-	"github.com/golang-jwt/jwt/v4"
 	"golang.org/x/crypto/bcrypt"
-	"strconv"
-	"time"
 )
 
 type User struct {
@@ -26,14 +23,4 @@ func (user *User) SetPassword(password string) {
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(password), 12)
 
 	user.Password = hashedPassword
-}
-
-func (user *User) GenerateJwtForUser() (string, error) {
-	claims := jwt.RegisteredClaims{
-		Subject:   strconv.Itoa(int(user.Id)),
-		ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour * 24)),
-	}
-
-	//todo: remove secret from here
-	return jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString([]byte("secret"))
 }

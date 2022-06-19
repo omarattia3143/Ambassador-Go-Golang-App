@@ -6,6 +6,7 @@ import (
 	"GoAndNextProject/src/models"
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"
+	"strings"
 	"time"
 )
 
@@ -31,7 +32,7 @@ func Register(c *fiber.Ctx) error {
 		FirstName:    data["first_name"],
 		LastName:     data["last_name"],
 		Email:        data["email"],
-		IsAmbassador: false,
+		IsAmbassador: strings.Contains(c.Path(), "/api/ambassador"),
 	}
 
 	user.SetPassword(data["password"])
@@ -47,6 +48,13 @@ func Register(c *fiber.Ctx) error {
 	}
 
 	var token string
+	var scope string
+
+	if user.IsAmbassador {
+		scope = "ambassador"
+	} else {
+		scope = "admin"
+	}
 
 	err = database.DB.Transaction(func(tx *gorm.DB) error {
 
@@ -56,7 +64,7 @@ func Register(c *fiber.Ctx) error {
 			return err
 		}
 
-		token, err = user.GenerateJwtForUser()
+		token, err = middleware.GenerateJWT(user.Id, scope)
 		if err != nil {
 			return err
 		}
@@ -106,7 +114,23 @@ func Login(c *fiber.Ctx) error {
 		return err
 	}
 
-	token, err := user.GenerateJwtForUser()
+	var scope string
+
+	if user.IsAmbassador && strings.Contains(c.Path(), "admin") {
+		c.Status(fiber.StatusUnauthorized)
+		return c.JSON(fiber.Map{
+			"message": "invalid scope",
+		})
+
+	}
+
+	if user.IsAmbassador {
+		scope = "ambassador"
+	} else {
+		scope = "admin"
+	}
+
+	token, err := middleware.GenerateJWT(user.Id, scope)
 	if err != nil {
 		return err
 	}

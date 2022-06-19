@@ -35,4 +35,18 @@ func Setup(app *fiber.App) {
 	//orders
 	adminAuthenticated.Get("orders", controllers.Orders)
 
+	//----------------------------------------------------------------
+
+	ambassador := api.Group("ambassador")
+	ambassador.Post("register", controllers.Register)
+	ambassador.Post("login", controllers.Login)
+
+	//admin + middleware
+	ambassadorAuthenticated := ambassador.Use(middleware.IsAuthenticated)
+	ambassadorAuthenticated.Get("user", controllers.User)
+	ambassadorAuthenticated.Post("logout", controllers.Logout)
+	ambassadorAuthenticated.Put("user/info", controllers.UpdateInfo)
+	ambassadorAuthenticated.Put("user/password", controllers.UpdatePassword)
+	ambassadorAuthenticated.Get("ambassadors", controllers.Ambassadors)
+
 }

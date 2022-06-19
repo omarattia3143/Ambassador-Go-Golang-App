@@ -5,8 +5,8 @@ Content-Type: application/json
   "FirstName" : "Omar",
   "LastName" : "Attia",
   "email" : "omar.aa.attia@gmail.com",
-  "password" : "secret",
-  "password_confirm" : "secret"
+  "password" : secret,
+  "password_confirm" : secret
 }
 
 ###
@@ -17,8 +17,8 @@ Content-Type: application/json
   "FirstName" : "jeff",
   "LastName" : "anderson",
   "email" : "jeff@gmail.com",
-  "password" : "secret",
-  "password_confirm" : "secret"
+  "password" : secret,
+  "password_confirm" : secret
 }
 
 ###
@@ -29,8 +29,8 @@ Content-Type: application/json
   "FirstName" : "john",
   "LastName" : "abo 3amo",
   "email" : "jeff@gmail.com",
-  "password" : "secret",
-  "password_confirm" : "secret"
+  "password" : secret,
+  "password_confirm" : secret
 }
 
 ###
@@ -41,6 +41,6 @@ Content-Type: application/json
   "FirstName" : "pangar",
   "LastName" : "pangoora",
   "email" : "pangar@cat.com",
-  "password" : "secret",
-  "password_confirm" : "secret"
+  "password" : secret,
+  "password_confirm" : secret
 }
