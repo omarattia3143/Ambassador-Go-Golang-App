@@ -23,7 +23,7 @@ func Connect() {
 }
 
 func AutoMigrate() {
-	err := DB.AutoMigrate(&models.User{}, &models.Product{})
+	err := DB.AutoMigrate(&models.User{}, &models.Product{}, &models.Link{}, &models.Order{}, &models.OrderItem{})
 	if err != nil {
 		panic("cannot migrate user model")
 	}

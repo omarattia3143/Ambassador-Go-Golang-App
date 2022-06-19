@@ -1,3 +1,50 @@
+GET http://localhost:8000/api/admin/orders
+Content-Type: application/json
+
+<> 2022-06-19T135053.200.json
+
+###
+
+GET http://localhost:8000/api/admin/orders
+Content-Type: application/json
+
+<> 2022-06-19T134836.200.json
+
+###
+
+GET http://localhost:8000/api/admin/orders
+Content-Type: application/json
+
+<> 2022-06-19T134607.200.json
+
+###
+
+POST http://localhost:8000/api/admin/login
+Content-Type: application/json
+
+{
+  "email": "jj@gmail.com",
+  "password" : "123"
+}
+
+<> 2022-06-19T134554.200.json
+
+###
+
+GET http://localhost:8000/api/admin/orders
+Content-Type: application/json
+
+<> 2022-06-19T134540.401.json
+
+###
+
+GET http://localhost:8000/api/admin/user/1/link
+Content-Type: application/json
+
+<> 2022-06-19T113904.200.json
+
+###
+
 GET http://localhost:8000/api/admin/products
 Content-Type: application/json
 
@@ -417,46 +464,6 @@ GET http://localhost:8000/api/admin/user
 Content-Type: application/json
 
 <> 2022-06-18T015429.404.txt
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-<> 2022-06-18T015425.404.txt
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-###
-
-GET http://localhost:8000/api/admin/user
-Content-Type: application/json
-
-###
-
-POST http://localhost:8000/api/admin/logout
-Content-Type: application/json
-
-<> 2022-06-17T121413.200.json
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-{}
-
-<> 2022-06-17T121359.400.json
-
-###
-
-POST http://localhost:8000/api/admin/login
-Content-Type: application/json
-
-<> 2022-06-17T121351.500.txt
 
 ###
 

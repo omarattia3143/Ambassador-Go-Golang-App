@@ -1,0 +1,4 @@
+### Get Links
+GET http://localhost:8000/api/admin/user/1/links
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NjMzMzMxfQ.0AF4WHeRNYywKnl9aQjpfXJfW9AOJZJrRNAoTmKy3sY

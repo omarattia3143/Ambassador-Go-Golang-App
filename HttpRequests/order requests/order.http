@@ -1,0 +1,4 @@
+### Get All
+GET http://localhost:8000/api/admin/orders
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwiZXhwIjoxNjU1NzI1NTU0fQ.CHPxUQedpyS05uRpo66STMRpMqZnGfNz3clYE0ZTBNU
