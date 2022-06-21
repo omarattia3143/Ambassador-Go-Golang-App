@@ -4,7 +4,9 @@ import (
 	"GoAndNextProject/src/database"
 	"GoAndNextProject/src/middleware"
 	"GoAndNextProject/src/models"
+	"context"
 	"github.com/bxcodec/faker/v3"
+	"github.com/go-redis/redis/v9"
 	"github.com/gofiber/fiber/v2"
 	"strconv"
 )
@@ -85,19 +87,21 @@ func Stats(c *fiber.Ctx) error {
 }
 
 func Rankings(c *fiber.Ctx) error {
-	var users []models.User
 
-	database.DB.Find(&users, models.User{
-		IsAmbassador: true,
-	})
+	rankings, err := database.Cache.ZRevRangeByScoreWithScores(context.Background(), "rankings", &redis.ZRangeBy{
+		Min: "-inf",
+		Max: "+inf",
+	}).Result()
 
-	var result []any
-
-	for _, user := range users {
-		var ambassador = models.Ambassador(user)
-		result = append(result, fiber.Map{
-			user.FullName(): ambassador.CalculateTotalRevenue(database.DB),
-		})
+	if err != nil {
+		return err
 	}
+
+	result := make(map[string]float64)
+
+	for _, ranking := range rankings {
+		result[ranking.Member.(string)] = ranking.Score
+	}
+
 	return c.JSON(result)
 }

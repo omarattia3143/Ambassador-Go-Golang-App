@@ -67,6 +67,6 @@ func (ambassador *Ambassador) CalculateTotalRevenue(db *gorm.DB) float64 {
 			revenue += orderItem.AmbassadorRevenue
 		}
 	}
-	return revenue
 
+	return revenue
 }
