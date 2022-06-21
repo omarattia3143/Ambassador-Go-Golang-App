@@ -15,6 +15,10 @@ type User struct {
 	Revenue      float64 `json:"revenue" gorm:"-"`
 }
 
+func (user *User) FullName() string {
+	return user.FirstName + " " + user.LastName
+}
+
 func (user *User) ComparePassword(password string) error {
 
 	return bcrypt.CompareHashAndPassword(user.Password, []byte(password))
