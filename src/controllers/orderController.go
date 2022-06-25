@@ -3,6 +3,7 @@ package controllers
 import (
 	"GoAndNextProject/src/database"
 	"GoAndNextProject/src/models"
+	"context"
 	"github.com/gofiber/fiber/v2"
 	"github.com/stripe/stripe-go/v72"
 	"github.com/stripe/stripe-go/v72/checkout/session"
@@ -36,11 +37,11 @@ func CreateOrder(c *fiber.Ctx) error {
 		return err
 	}
 
-	link := models.Link{
-		Code: request.Code,
-	}
+	link := models.Link{}
 
-	database.DB.Preload("User").First(&link)
+	database.DB.Preload("User").First(&link, models.Link{
+		Code: request.Code,
+	})
 
 	if link.Id == 0 {
 		c.Status(fiber.StatusBadRequest)
@@ -140,4 +141,47 @@ func CreateOrder(c *fiber.Ctx) error {
 	tx.Commit()
 
 	return c.JSON(source)
+}
+
+func CompleteOrder(c *fiber.Ctx) error {
+	var data map[string]string
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	order := models.Order{}
+
+	database.DB.Preload("OrderItems").First(&order, &models.Order{
+		TransactionId: data["source"],
+	})
+
+	if order.Id == 0 {
+		c.Status(fiber.StatusBadRequest)
+		return c.JSON(fiber.Map{
+			"message": "Order not found",
+		})
+	}
+
+	order.Complete = true
+	database.DB.Save(&order)
+
+	go func(order models.Order) {
+		ambssadorRevenue := 0.0
+		adminRevenue := 0.0
+
+		for _, item := range order.OrderItems {
+			ambssadorRevenue += item.AmbassadorRevenue
+			adminRevenue += item.AdminRevenue
+		}
+		user := models.User{}
+		user.Id = order.UserId
+
+		database.DB.First(&user)
+
+		database.Cache.ZIncrBy(context.Background(), "rankings", ambssadorRevenue, user.FullName())
+	}(order)
+
+	return c.JSON(fiber.Map{
+		"message": "success",
+	})
 }
