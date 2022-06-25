@@ -105,3 +105,14 @@ func Rankings(c *fiber.Ctx) error {
 
 	return c.JSON(result)
 }
+
+func GetLink(c *fiber.Ctx) error {
+	code := c.Params("code")
+	link := models.Link{
+		Code: code,
+	}
+
+	database.DB.Preload("User").Preload("Products").Find(&link)
+
+	return c.JSON(link)
+}
