@@ -4,9 +4,11 @@ import (
 	"GoAndNextProject/src/database"
 	"GoAndNextProject/src/models"
 	"context"
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/stripe/stripe-go/v72"
 	"github.com/stripe/stripe-go/v72/checkout/session"
+	"net/smtp"
 )
 
 func Orders(c *fiber.Ctx) error {
@@ -21,8 +23,8 @@ func Orders(c *fiber.Ctx) error {
 
 type CreateOrderRequest struct {
 	Code      string
-	FirstName string
-	LastName  string
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
 	Email     string
 	Address   string
 	Country   string
@@ -65,11 +67,10 @@ func CreateOrder(c *fiber.Ctx) error {
 
 	tx := database.DB.Begin()
 
-	if err := tx.Create(&order); err != nil {
+	if err := tx.Create(&order).Error; err != nil {
 		tx.Rollback()
-		c.Status(fiber.StatusBadRequest)
-		return c.JSON(fiber.Map{
-			"message": err,
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"message": err.Error(),
 		})
 	}
 
@@ -91,11 +92,11 @@ func CreateOrder(c *fiber.Ctx) error {
 			AmbassadorRevenue: 0.1 * total,
 		}
 
-		if err := tx.Create(&item); err != nil {
+		if err := tx.Create(&item).Error; err != nil {
 			tx.Rollback()
 			c.Status(fiber.StatusBadRequest)
 			return c.JSON(fiber.Map{
-				"message": err,
+				"message": err.Error(),
 			})
 		}
 
@@ -130,11 +131,11 @@ func CreateOrder(c *fiber.Ctx) error {
 
 	order.TransactionId = source.ID
 
-	if err := tx.Save(&order); err != nil {
+	if err := tx.Save(&order).Error; err != nil {
 		tx.Rollback()
 		c.Status(fiber.StatusBadRequest)
 		return c.JSON(fiber.Map{
-			"message": err,
+			"message": err.Error(),
 		})
 	}
 
@@ -179,6 +180,12 @@ func CompleteOrder(c *fiber.Ctx) error {
 		database.DB.First(&user)
 
 		database.Cache.ZIncrBy(context.Background(), "rankings", ambssadorRevenue, user.FullName())
+
+		ambassadorMessage := []byte(fmt.Sprintf("You earned $%f from the link #%s", ambssadorRevenue, order.Code))
+		smtp.SendMail("localhost:1025", nil, "no-reply@email.com", []string{order.AmbassadorEmail}, ambassadorMessage)
+
+		adminMessage := []byte(fmt.Sprintf("Order #%d with a total of $%f has been completed", order.Id, adminRevenue))
+		smtp.SendMail("localhost:1025", nil, "no-reply@email.com", []string{"admin@admin.com"}, adminMessage)
 	}(order)
 
 	return c.JSON(fiber.Map{
