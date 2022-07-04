@@ -1,6 +1,6 @@
 # GoAndNextProject
-**A simple CMS for products built using Go, Fiber, React and Next
-This project is a backend for** https://github.com/omarattia3143/react-admin .
+**A simple CMS (ambassador app) using Go, Fiber, React, Next, redis, mailhog, stripe, goroutines, gorm, docker and jwt
+This project is a backend for** https://github.com/omarattia3143/react-admin
 
 To run project using **docker compose**:
 
