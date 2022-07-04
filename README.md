@@ -1,10 +1,10 @@
 # GoAndNextProject
-A simple CMS for products built using Go, Fiber, React and Next
-This project is a backend for https://github.com/omarattia3143/react-admin built in react and nextjs.
+**A simple CMS for products built using Go, Fiber, React and Next
+This project is a backend for** https://github.com/omarattia3143/react-admin .
 
-To run project using docker compose:
+To run project using **docker compose**:
 
-
+```
 version: '3.9'
 services:
   backend:
@@ -31,11 +31,11 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+```
 
+also **dockerfile** for mailhog (smtp server) but in dockerfile to avoid some complications:
 
-also dockerfile for mailhog (smtp server) but in dockerfile to avoid some complications:
-
-
+```
 ARG GOTAG=1.18-alpine
 FROM golang:${GOTAG} as builder
 MAINTAINER CD2Team <codesign2@icloud.com>
@@ -50,6 +50,6 @@ WORKDIR /bin
 COPY --from=builder tmp/gocode/bin/MailHog /bin/MailHog
 EXPOSE 1025 8025
 ENTRYPOINT ["MailHog"]
-
+```
 
 also future refactoring will be done to this project (moving repo and bussniess logic to service and repository layers)
