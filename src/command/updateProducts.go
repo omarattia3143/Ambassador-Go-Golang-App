@@ -25,7 +25,7 @@ func main() {
 
 			p.Title = faker.RandomProductName()
 			p.Description = faker.RandomProductAdjective()
-			p.Image = faker.RandomAvatarImage()
+			p.Image = faker.RandomAbstractImage()
 
 			database.DB.Save(&p)
 

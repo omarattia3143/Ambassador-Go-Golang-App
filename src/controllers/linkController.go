@@ -5,7 +5,7 @@ import (
 	"GoAndNextProject/src/middleware"
 	"GoAndNextProject/src/models"
 	"context"
-	"github.com/bxcodec/faker/v3"
+	faker2 "github.com/ddosify/go-faker/faker"
 	"github.com/go-redis/redis/v9"
 	"github.com/gofiber/fiber/v2"
 	"strconv"
@@ -31,6 +31,7 @@ type CreateLinkRequest struct {
 }
 
 func CreateLink(c *fiber.Ctx) error {
+	faker := faker2.NewFaker()
 	var request CreateLinkRequest
 	if err := c.BodyParser(&request); err != nil {
 		return err
@@ -39,14 +40,14 @@ func CreateLink(c *fiber.Ctx) error {
 	id, _ := middleware.GetUserId(c)
 
 	link := models.Link{
-		Code:   faker.Username(),
+		Code:   faker.RandomBankAccountBic(),
 		UserId: id,
 	}
 
 	for productId := range request.Products {
-		product := models.Product{
-			Model: models.Model{Id: uint(productId)},
-		}
+		product := models.Product{}
+		product.Id = uint(productId)
+
 		link.Products = append(link.Products, product)
 	}
 

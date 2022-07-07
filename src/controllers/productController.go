@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/gofiber/fiber/v2"
+	"gorm.io/gorm/clause"
 	"sort"
 	"strconv"
 	"strings"
@@ -79,7 +80,11 @@ func DeleteProduct(c *fiber.Ctx) error {
 	product := models.Product{}
 	product.Id = uint(id)
 
-	database.DB.Delete(&product)
+	err := database.DB.Select(clause.Associations).Delete(&product).Error
+
+	if err != nil {
+		return err
+	}
 
 	go database.ClearCache("product_frontend", "product_backend")
 
