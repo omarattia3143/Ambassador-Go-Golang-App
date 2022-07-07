@@ -1,13 +1,14 @@
 version: '3.9'
 services:
-#  backend:
-#    build: .
-#    ports:
-#      - "8000:3000"
-#    volumes:
-#      - .:/app
-#    depends_on:
-#      - db
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
 
   db:
     image: mysql

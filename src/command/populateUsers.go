@@ -3,18 +3,19 @@ package main
 import (
 	"GoAndNextProject/src/database"
 	"GoAndNextProject/src/models"
-	"github.com/bxcodec/faker/v3"
+	"github.com/ddosify/go-faker/faker"
 )
 
 func main() {
 
+	faker := faker.NewFaker()
 	database.Connect()
 
 	for i := 0; i < 30; i++ {
 		ambassador := models.User{
-			FirstName:    faker.FirstName(),
-			LastName:     faker.LastName(),
-			Email:        faker.Email(),
+			FirstName:    faker.RandomPersonFirstName(),
+			LastName:     faker.RandomPersonLastName(),
+			Email:        faker.RandomEmail(),
 			IsAmbassador: true,
 		}
 
