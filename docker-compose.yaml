@@ -6,6 +6,7 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+    restart: always
     depends_on:
       - db
       - redis
@@ -22,5 +23,6 @@ services:
       - "3306:3306"
   redis:
     image: redis:latest
+    restart: always
     ports:
       - "6379:6379"
