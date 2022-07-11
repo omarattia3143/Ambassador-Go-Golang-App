@@ -21,12 +21,12 @@ type Order struct {
 
 type OrderItem struct {
 	Model
-	OrderId           uint
-	ProductTitle      string
-	Price             float64
-	Quantity          uint
-	AdminRevenue      float64
-	AmbassadorRevenue float64
+	OrderId           uint    `json:"order_id"`
+	ProductTitle      string  `json:"product_title"`
+	Price             float64 `json:"price"`
+	Quantity          uint    `json:"quantity"`
+	AdminRevenue      float64 `json:"admin_revenue"`
+	AmbassadorRevenue float64 `json:"ambassador_revenue"`
 }
 
 func (order *Order) SetFullName() {
