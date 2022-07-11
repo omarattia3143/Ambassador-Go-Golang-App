@@ -3,13 +3,13 @@ package main
 import (
 	"GoAndNextProject/src/database"
 	"GoAndNextProject/src/models"
-	"github.com/ddosify/go-faker/faker"
+	faker2 "github.com/ddosify/go-faker/faker"
 	"math/rand"
 )
 
 func main() {
 	database.Connect()
-	faker := faker.NewFaker()
+	faker := faker2.NewFaker()
 	for i := 0; i < 30; i++ {
 		var orderItems []models.OrderItem
 
@@ -25,6 +25,7 @@ func main() {
 		}
 
 		database.DB.Create(&models.Order{
+			TransactionId:   "",
 			UserId:          uint(rand.Intn(30) + 1),
 			Code:            faker.RandomBankAccountBic(),
 			AmbassadorEmail: faker.RandomEmail(),
@@ -32,6 +33,7 @@ func main() {
 			LastName:        faker.RandomPersonLastName(),
 			Email:           faker.RandomEmail(),
 			Complete:        true,
+			Total:           0,
 			OrderItems:      orderItems,
 		})
 	}

@@ -14,11 +14,11 @@ import (
 func Orders(c *fiber.Ctx) error {
 	var orders []models.Order
 	database.DB.Preload("OrderItems").Find(&orders)
-	for _, order := range orders {
-		order.SetFullName()
-		order.GetTotal()
+	for i, order := range orders {
+		orders[i].SetFullName()
+		orders[i].Total = order.GetTotal()
 	}
-	return c.JSON(orders)
+	return c.JSON(&orders)
 }
 
 type CreateOrderRequest struct {

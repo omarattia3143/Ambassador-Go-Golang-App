@@ -8,7 +8,7 @@ type Order struct {
 	AmbassadorEmail string      `json:"ambassador_email"`
 	FirstName       string      `json:"first_name"`
 	LastName        string      `json:"last_name"`
-	FullName        string      `json:"fullName" gorm:"-"`
+	FullName        string      `json:"full_name" gorm:"-"`
 	Email           string      `json:"email"`
 	Address         string      `json:"address" gorm:"null"`
 	City            string      `json:"city" gorm:"null"`

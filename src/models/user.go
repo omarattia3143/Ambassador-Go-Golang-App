@@ -7,12 +7,12 @@ import (
 
 type User struct {
 	Model
-	FirstName    string  `json:"first_name"`
-	LastName     string  `json:"last_name"`
-	Email        string  `json:"email" gorm:"unique"`
-	Password     []byte  `json:"-"`
-	IsAmbassador bool    `json:"-"`
-	Revenue      float64 `json:"revenue" gorm:"-"`
+	FirstName    string   `json:"first_name"`
+	LastName     string   `json:"last_name"`
+	Email        string   `json:"email" gorm:"unique"`
+	Password     []byte   `json:"-"`
+	IsAmbassador bool     `json:"-"`
+	Revenue      *float64 `json:"revenue" gorm:"-"`
 }
 
 func (user *User) FullName() string {
@@ -53,7 +53,7 @@ func (admin *Admin) CalculateTotalRevenue(db *gorm.DB) float64 {
 
 type Ambassador User
 
-func (ambassador *Ambassador) CalculateTotalRevenue(db *gorm.DB) float64 {
+func (ambassador *Ambassador) CalculateTotalRevenue(db *gorm.DB) *float64 {
 	var orders []Order
 
 	db.Preload("OrderItems").Find(&orders, Order{
@@ -68,5 +68,5 @@ func (ambassador *Ambassador) CalculateTotalRevenue(db *gorm.DB) float64 {
 		}
 	}
 
-	return revenue
+	return &revenue
 }
