@@ -23,7 +23,7 @@ func main() {
 		ambassador := models.Ambassador(user)
 
 		database.Cache.ZAdd(ctx, "rankings", redis.Z{
-			Score:  ambassador.CalculateTotalRevenue(database.DB),
+			Score:  *ambassador.CalculateTotalRevenue(database.DB),
 			Member: user.FullName(),
 		})
 	}
