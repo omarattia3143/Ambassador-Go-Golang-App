@@ -10,6 +10,7 @@ import (
 
 func main() {
 
+	iqhdiwhdihdiwqhidwq
 	database.Connect()
 	database.AutoMigrate()
 	database.SetupRedis()
