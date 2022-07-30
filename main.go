@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-
+	qwdwqddw
 	database.Connect()
 	database.AutoMigrate()
 	database.SetupRedis()
