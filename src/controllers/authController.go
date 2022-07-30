@@ -60,7 +60,7 @@ func Register(c *fiber.Ctx) error {
 
 		// do some database operations in the transaction (use 'tx' from this point, not 'db')
 		if err := tx.Create(&user).Error; err != nil {
-			// return any error will rollback
+			// return any error will roll back
 			return err
 		}
 
