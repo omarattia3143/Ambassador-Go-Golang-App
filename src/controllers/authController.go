@@ -69,7 +69,7 @@ func Register(c *fiber.Ctx) error {
 			return err
 		}
 
-		// return nil will commit the whole transaction
+		// return nil will commit the whole transaction 1
 		return nil
 	})
 	if err != nil {
